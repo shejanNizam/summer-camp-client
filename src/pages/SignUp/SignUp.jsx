@@ -37,7 +37,7 @@ const SignUp = () => {
   return (
     <>
       <Helmet>
-        <title>SignUp | Task Management</title>
+        <title>SignUp | LanguageGuide</title>
       </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content ">
@@ -101,7 +101,7 @@ const SignUp = () => {
                 </div>
               </form>
               <p className="my-4 text-center">
-                Already Have an Account?
+                Already Have an Account? Please..
                 <Link className="text-orange-600 font-bold" to="/login">
                   Login
                 </Link>

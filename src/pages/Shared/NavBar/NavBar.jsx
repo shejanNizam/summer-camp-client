@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { FaUserAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../../providers/AuthProvider";
+import useAuth from "../../../hooks/useAuth";
+import useCart from "../../../hooks/useCart";
 
 const NavBar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useAuth();
+  const [cartClass] = useCart();
 
   const handleLogOut = () => {
     logOut()
@@ -20,20 +22,29 @@ const NavBar = () => {
         <Link to="/"> Home </Link>
       </li>
       <li>
-        <Link to="/allTask"> All Task </Link>
+        <Link to="/instructors"> Instructors </Link>
       </li>
       <li>
-        <Link to="/addTask"> Add a Task </Link>
-      </li>
-      <li>
-        <Link to="/about"> About </Link>
+        <Link to="/classes"> Classes </Link>
       </li>
       {user?.email ? (
-        <li>
-          <Link>
-            <button onClick={handleLogOut}> Log out </button>
-          </Link>
-        </li>
+        <>
+          <li>
+            <Link to="/dashboard/mycart ">
+              <button className="btn">
+                Dashboard
+                <div className="badge badge-secondary">
+                  +{cartClass.length || 0}
+                </div>
+              </button>
+            </Link>
+          </li>
+          <li>
+            <Link>
+              <button onClick={handleLogOut}> Log out </button>
+            </Link>
+          </li>
+        </>
       ) : (
         <li>
           <Link to="/login">Login</Link>
@@ -44,7 +55,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl bg-black text-white">
+      <div className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl h-12 bg-black text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -70,7 +81,9 @@ const NavBar = () => {
               {navItems}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <Link to="/" className="btn btn-ghost normal-case text-3xl">
+            LanguageGuide
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navItems}</ul>

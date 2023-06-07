@@ -35,7 +35,7 @@ const Login = () => {
   return (
     <>
       <Helmet>
-        <title>Login | Task Management</title>
+        <title>Login | LanguageGuide</title>
       </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content ">
@@ -77,7 +77,7 @@ const Login = () => {
                 </div>
               </form>
               <p className="my-4 text-center">
-                New to Toy Cars..
+                New to LanguageGuide Please..
                 <Link className="text-orange-600 font-bold ms-1" to="/signup">
                   Sign Up
                 </Link>

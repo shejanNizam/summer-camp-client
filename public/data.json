@@ -1,0 +1,72 @@
+[
+  {
+    "language_name": "English",
+    "image": "https://i.ibb.co/tqFs3xG/english.jpg",
+    "instructor": " Mr. A ",
+    "available_seat": 15,
+    "price": 39
+  },
+  {
+    "language_name": "Spanish",
+    "image": "https://i.ibb.co/pQj2yw1/spanish.jpg",
+    "instructor": " Mr. B ",
+    "available_seat": 15,
+    "price": 32
+  },
+  {
+    "language_name": "Arabic",
+    "image": "https://i.ibb.co/61gF2YS/arabic.jpg",
+    "instructor": " Mr. C ",
+    "available_seat": 15,
+    "price": 37
+  },
+  {
+    "language_name": "Bengali",
+    "image": "https://i.ibb.co/1RqTw8x/bengali.jpg",
+    "instructor": " Mr. D ",
+    "available_seat": 15,
+    "price": 35
+  },
+  {
+    "language_name": "French",
+    "image": "https://i.ibb.co/mh61VqV/french.jpg",
+    "instructor": " Mr. B ",
+    "available_seat": 15,
+    "price": 38
+  },
+  {
+    "language_name": "Portuguese",
+    "image": "https://i.ibb.co/F0r6wzK/portuguese.jpg",
+    "instructor": " Mr. F ",
+    "available_seat": 15,
+    "price": 33
+  },
+  {
+    "language_name": "Russian",
+    "image": "https://i.ibb.co/51zR3vD/russian.jpg",
+    "instructor": " Mr. F ",
+    "available_seat": 15,
+    "price": 37
+  },
+  {
+    "language_name": "Japanese",
+    "image": "https://i.ibb.co/LtQcPWW/japanese.jpg",
+    "instructor": " Mr. H ",
+    "available_seat": 15,
+    "price": 34
+  },
+  {
+    "language_name": "Hindi",
+    "image": "https://i.ibb.co/NZjbPp7/hindi.jpg",
+    "instructor": " Mr. D ",
+    "available_seat": 15,
+    "price": 33
+  },
+  {
+    "language_name": "Mandarin",
+    "image": "https://i.ibb.co/M9J5wgX/mandarin.jpg",
+    "instructor": " Mr. H ",
+    "available_seat": 15,
+    "price": 39
+  }
+]
