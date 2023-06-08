@@ -5,8 +5,6 @@ import useCart from "../../../hooks/useCart";
 
 const MyCart = () => {
   const [cartClass, refetch] = useCart();
-  console.log(cartClass);
-  // how does reduce work!!!
   const total = cartClass.reduce((sum, item) => item.price + sum, 0);
 
   const handleDelete = (item) => {
