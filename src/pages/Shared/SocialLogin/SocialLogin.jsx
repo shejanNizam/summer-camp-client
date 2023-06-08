@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const SocialLogin = () => {
+  const location = useLocation();
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || "/";
@@ -27,10 +28,8 @@ const SocialLogin = () => {
           body: JSON.stringify(saveUser),
         })
           .then((res) => res.json())
-          .then((data) => {
-            if (data?.insertedId) {
-              navigate(from, { replace: true });
-            }
+          .then(() => {
+            navigate(from, { replace: true });
           });
       })
       .catch((error) => console.log(error));

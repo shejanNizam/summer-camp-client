@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
-import SocialLogin from "../shared/SocialLogin/SocialLogin";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const {
@@ -57,10 +57,8 @@ const SignUp = () => {
       </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Sign up now!</h1>
-          </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <div className="card flex-shrink-0 w-full max-w-sm m-12 shadow-2xl bg-base-100">
+            <h1 className="text-3xl text-center font-bold">Sign up!</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -146,18 +144,20 @@ const SignUp = () => {
               </div>
               <div className="form-control mt-6">
                 <input
-                  className="btn btn-primary"
+                  className="btn btn-outline"
                   type="submit"
                   value="Sign Up"
                 />
               </div>
             </form>
-            <p>
-              <small>
-                Already have an account <Link to="/login">Login</Link>
-              </small>
+
+            <p className="my-4 text-center">
+              Already have an account Please..
+              <Link className="text-orange-600 font-bold ms-1" to="/login">
+                Login
+              </Link>
+              <SocialLogin />
             </p>
-            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
