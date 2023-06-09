@@ -10,7 +10,7 @@ const Classes = () => {
       <Helmet>
         <title>Classes | LanguageGuide</title>
       </Helmet>
-      <h3 className="text-center text-4xl my-8">Total: {classes.length} </h3>
+      <h3 className="text-center text-4xl my-8">Total: {classes?.length} </h3>
       <div className="grid grid-cols-3 gap-12">
         {classes?.map((singleClass) => (
           <SingleClass

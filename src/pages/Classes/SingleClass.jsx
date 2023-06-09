@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import useCart from "../../hooks/useCart";
 
 const SingleClass = ({ singleClass }) => {
-  const { _id, image, language_name, instructor, available_seat, price } =
+  const { _id, image, language_name, instructor, total_seat, enrolled, price } =
     singleClass;
   const { user } = useAuth();
   const [, refetch] = useCart();
@@ -62,29 +62,28 @@ const SingleClass = ({ singleClass }) => {
   };
 
   return (
-    <div>
-      <div>
-        <div className="card w-96 glass">
-          <figure>
-            <img className=" w-80 h-48" src={image} alt="car!" />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title"> {language_name} </h2>
-            <p> Instructor: {instructor} </p>
-            <p> Available Seat: {available_seat} </p>
-            <p> Price: ${price} </p>
-            <div className="card-actions justify-end">
-              <button
-                onClick={() => handleSelect(singleClass)}
-                className="btn btn-primary btn-sm"
-              >
-                Select
-              </button>
-            </div>
+    <>
+      <div className="card w-96 glass">
+        <figure>
+          <img className=" w-80 h-48" src={image} alt="car!" />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title"> {language_name} </h2>
+          <p> Instructor: {instructor} </p>
+          <p> Total Seat: {total_seat} </p>
+          <p> Enrolled: {enrolled} </p>
+          <p> Price: ${price} </p>
+          <div className="card-actions justify-end">
+            <button
+              onClick={() => handleSelect(singleClass)}
+              className="btn btn-primary btn-sm"
+            >
+              Select
+            </button>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

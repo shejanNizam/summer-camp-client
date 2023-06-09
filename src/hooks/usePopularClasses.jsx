@@ -1,22 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure";
 
-const useInstructor = () => {
+const usePopularClasses = () => {
   const [axiosSecure] = useAxiosSecure();
 
   const {
-    data: instructors = [],
+    data: classes = [],
     isLoading: loading,
     refetch,
   } = useQuery({
-    queryKey: ["popularInstructors"],
+    queryKey: ["popularClasses"],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/popularInstructors`);
+      const res = await axiosSecure.get(`/popularClasses`);
       return res.data;
     },
   });
 
-  return [instructors, loading, refetch];
+  return [classes, loading, refetch];
 };
 
-export default useInstructor;
+export default usePopularClasses;
