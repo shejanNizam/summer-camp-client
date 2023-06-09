@@ -3,7 +3,9 @@ import {
   FaBook,
   FaCalendarAlt,
   FaHome,
+  FaHospitalUser,
   FaShoppingCart,
+  FaUserGraduate,
   FaUsers,
   FaUtensils,
   FaWallet,
@@ -40,23 +42,23 @@ const Dashboard = () => {
           {isAdmin ? (
             <>
               <li>
-                <NavLink to="/dashboard/adminhome">
+                <NavLink to="/dashboard/adminHome">
                   <FaHome></FaHome> Admin Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/addItem">
+                <NavLink to="/dashboard/addClass">
                   <FaUtensils></FaUtensils> Add an Item
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manageitems">
-                  <FaWallet></FaWallet> Manage Items
+                <NavLink to="/dashboard/manageAllClasses">
+                  <FaWallet></FaWallet> Manage All Classes
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/">
-                  <FaBook></FaBook> Manage Bookings(not implemented)
+                <NavLink to="/dashboard/manageAllBookings">
+                  <FaBook></FaBook> Manage All Bookings
                 </NavLink>
               </li>
               <li>
@@ -68,27 +70,27 @@ const Dashboard = () => {
           ) : isInstructor ? (
             <>
               <li>
-                <NavLink to="/dashboard/adminhome">
-                  <FaHome></FaHome> Admin Home
+                <NavLink to="/dashboard/instructorHome">
+                  <FaHome></FaHome> Instructor Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/addItem">
-                  <FaUtensils></FaUtensils> Add an Item
+                <NavLink to="/dashboard/addClass">
+                  <FaUtensils></FaUtensils> Add a Class
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manageitems">
-                  <FaWallet></FaWallet> Manage Items
+                <NavLink to="/dashboard/manageClasses">
+                  <FaWallet></FaWallet> Manage Classes
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/">
-                  <FaBook></FaBook> Manage Bookings(not implemented)
+                <NavLink to="/dashboard/bookingClasses">
+                  <FaBook></FaBook> Manage Bookings
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/instructors">
+                <NavLink to="/dashboard/allInstructors">
                   <FaUsers></FaUsers> All Instructors
                 </NavLink>
               </li>
@@ -96,7 +98,7 @@ const Dashboard = () => {
           ) : (
             <>
               <li>
-                <NavLink to="/dashboard/home">
+                <NavLink to="/dashboard/userHome">
                   <FaHome></FaHome> User Home
                 </NavLink>
               </li>
@@ -106,7 +108,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/history">
+                <NavLink to="/dashboard/paymentHistory">
                   <FaWallet></FaWallet> Payment History
                 </NavLink>
               </li>
@@ -128,10 +130,14 @@ const Dashboard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/classes"> Our Classes</NavLink>
+            <NavLink to="/classes">
+              <FaHospitalUser /> Our Classes
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/instructors">Our Instructors</NavLink>
+            <NavLink to="/ourAllInstructors">
+              <FaUserGraduate /> Our Instructors
+            </NavLink>
           </li>
         </ul>
       </div>

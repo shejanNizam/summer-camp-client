@@ -1,12 +1,16 @@
 import React from "react";
 import { FaUserAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useAdmin from "../../../hooks/useAdmin";
 import useAuth from "../../../hooks/useAuth";
 import useCart from "../../../hooks/useCart";
+import useInstructor from "../../../hooks/useInstructor";
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
   const [cartClass] = useCart();
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
 
   const handleLogOut = () => {
     logOut()
@@ -22,19 +26,34 @@ const NavBar = () => {
         <Link to="/"> Home </Link>
       </li>
       <li>
+        <Link to="/ourAllInstructors"> Instructors </Link>
+      </li>
+      <li>
         <Link to="/classes"> Classes </Link>
       </li>
       {user?.email ? (
         <>
           <li>
-            <Link to="/dashboard/mycart ">
-              <button className="btn">
-                Dashboard
-                <div className="badge badge-secondary">
-                  +{cartClass.length || 0}
-                </div>
-              </button>
-            </Link>
+            {isAdmin ? (
+              <>
+                <Link to="/dashboard/allusers ">Dashboard</Link>
+              </>
+            ) : isInstructor ? (
+              <>
+                <Link to="/dashboard/allInstructors ">Dashboard</Link>
+              </>
+            ) : (
+              <>
+                <Link to="/dashboard/mycart ">
+                  <button className="btn">
+                    Dashboard
+                    <div className="badge badge-secondary">
+                      +{cartClass.length || 0}
+                    </div>
+                  </button>
+                </Link>
+              </>
+            )}
           </li>
           <li>
             <Link>

@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
-import useCart from "../../../hooks/useCart";
+import useCart from "../../../../hooks/useCart";
 
 const MyCart = () => {
   const [cartClass, refetch] = useCart();
@@ -48,10 +48,11 @@ const MyCart = () => {
           <thead>
             <tr>
               <th>#</th>
-              <th>Food</th>
-              <th>Item Name</th>
-              <th>Price</th>
-              <th>Action</th>
+              <th> Image </th>
+              <th> Language </th>
+              <th> Instructor </th>
+              <th> Price </th>
+              <th> Remove </th>
             </tr>
           </thead>
           <tbody>
@@ -69,6 +70,7 @@ const MyCart = () => {
                   </div>
                 </td>
                 <td>{item.language_name}</td>
+                <td>{item.instructor}</td>
                 <td>${item.price}</td>
                 <td>
                   <button
