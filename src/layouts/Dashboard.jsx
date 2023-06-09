@@ -11,12 +11,15 @@ import {
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useCart from "../hooks/useCart";
+import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
   const [cartClass] = useCart();
 
   // const isAdmin = true;
   const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+  // const isInstructor = true;
 
   return (
     <div className="drawer lg:drawer-open">
@@ -59,6 +62,34 @@ const Dashboard = () => {
               <li>
                 <NavLink to="/dashboard/allusers">
                   <FaUsers></FaUsers> All Users
+                </NavLink>
+              </li>
+            </>
+          ) : isInstructor ? (
+            <>
+              <li>
+                <NavLink to="/dashboard/adminhome">
+                  <FaHome></FaHome> Admin Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/addItem">
+                  <FaUtensils></FaUtensils> Add an Item
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/manageitems">
+                  <FaWallet></FaWallet> Manage Items
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/">
+                  <FaBook></FaBook> Manage Bookings(not implemented)
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/instructors">
+                  <FaUsers></FaUsers> All Instructors
                 </NavLink>
               </li>
             </>

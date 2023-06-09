@@ -19,12 +19,32 @@ const AllUsers = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.modifiedCount) {
+        if (data?.modifiedCount) {
           refetch();
           Swal.fire({
             position: "center",
             icon: "success",
             title: `${user.name} is an Admin Now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+
+  const handleMakeInstructor = (user) => {
+    fetch(`http://localhost:7000/users/instructor/${user._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data?.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `${user.name} is an Instructor Now!`,
             showConfirmButton: false,
             timer: 1500,
           });
@@ -51,7 +71,8 @@ const AllUsers = () => {
               <th>#</th>
               <th>Name</th>
               <th>Email</th>
-              <th>Role</th>
+              <th>Make Admin</th>
+              <th>Make Instructor</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -63,11 +84,23 @@ const AllUsers = () => {
                 <td>{user.email}</td>
                 <td>
                   {user.role === "admin" ? (
-                    "admin"
+                    "Admin"
                   ) : (
                     <button
                       onClick={() => handleMakeAdmin(user)}
                       className="btn btn-ghost bg-orange-600  text-white"
+                    >
+                      <FaUserShield></FaUserShield>
+                    </button>
+                  )}
+                </td>
+                <td>
+                  {user.role === "instructor" ? (
+                    "Instructor"
+                  ) : (
+                    <button
+                      onClick={() => handleMakeInstructor(user)}
+                      className="btn btn-ghost bg-gray-600  text-white"
                     >
                       <FaUserShield></FaUserShield>
                     </button>
