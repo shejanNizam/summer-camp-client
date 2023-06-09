@@ -1,6 +1,6 @@
 import React from "react";
 
-const PopularInstructorsCard = ({ singleInstructor }) => {
+const AllInstructorCard = ({ singleInstructor }) => {
   const {
     image,
     instructor_name,
@@ -34,4 +34,4 @@ const PopularInstructorsCard = ({ singleInstructor }) => {
   );
 };
 
-export default PopularInstructorsCard;
+export default AllInstructorCard;

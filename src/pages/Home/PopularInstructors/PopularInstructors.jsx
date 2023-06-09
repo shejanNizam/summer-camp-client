@@ -1,9 +1,9 @@
 import React from "react";
-import useInstructor from "../../../hooks/useInstructor";
+import usePopularInstructor from "../../../hooks/usePopularInstructor";
 import PopularInstructorsCard from "./PopularInstructorsCard";
 
 const PopularInstructors = () => {
-  const [instructors] = useInstructor();
+  const [instructors] = usePopularInstructor();
   return (
     <div>
       <h3 className="text-3xl text-center font-bold my-20">

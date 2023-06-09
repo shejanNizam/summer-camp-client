@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import useAdmin from "../../../hooks/useAdmin";
 import useAuth from "../../../hooks/useAuth";
 import useCart from "../../../hooks/useCart";
-import useInstructor from "../../../hooks/useInstructor";
+import usePopularInstructor from "../../../hooks/usePopularInstructor";
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
   const [cartClass] = useCart();
   const [isAdmin] = useAdmin();
-  const [isInstructor] = useInstructor();
+  const [isInstructor] = usePopularInstructor();
 
   const handleLogOut = () => {
     logOut()
