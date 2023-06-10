@@ -10,6 +10,7 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
+    watch,
     reset,
     formState: { errors },
   } = useForm();
@@ -17,6 +18,15 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
+    if (data.password !== data.confirmPassword) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Passwords do not match",
+      });
+      return;
+    }
+
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
@@ -36,7 +46,7 @@ const SignUp = () => {
               if (data?.insertedId) {
                 reset();
                 Swal.fire({
-                  position: "top-end",
+                  position: "center",
                   icon: "success",
                   title: "User created successfully.",
                   showConfirmButton: false,
@@ -142,6 +152,27 @@ const SignUp = () => {
                   </a>
                 </label>
               </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Confirm Password</span>
+                </label>
+                <input
+                  type="password"
+                  {...register("confirmPassword", {
+                    required: true,
+                    validate: (value) => value === watch("password"),
+                  })}
+                  placeholder="confirm password"
+                  className="input input-bordered"
+                />
+                {errors.confirmPassword?.type === "required" && (
+                  <p className="text-red-600">Confirm Password is required</p>
+                )}
+                {errors.confirmPassword?.type === "validate" && (
+                  <p className="text-red-600">Passwords do not match</p>
+                )}
+              </div>
+
               <div className="form-control mt-6">
                 <input
                   className="btn btn-outline"
