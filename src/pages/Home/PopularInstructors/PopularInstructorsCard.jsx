@@ -1,4 +1,5 @@
 import React from "react";
+import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 
 const PopularInstructorsCard = ({ singleInstructor }) => {
@@ -11,8 +12,8 @@ const PopularInstructorsCard = ({ singleInstructor }) => {
     num_of_students,
   } = singleInstructor;
   return (
-    <div>
-      <div className="card w-72 mx-auto glass">
+    <Fade cascade>
+      <div className="card rounded w-72 mx-auto glass">
         <figure>
           <div className="avatar mt-4">
             <div className="w-40 rounded-full ring ring-ghost ring-offset-base-100 ring-offset-2">
@@ -33,7 +34,7 @@ const PopularInstructorsCard = ({ singleInstructor }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Fade>
   );
 };
 

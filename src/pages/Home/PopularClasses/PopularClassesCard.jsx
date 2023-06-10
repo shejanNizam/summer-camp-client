@@ -1,11 +1,12 @@
 import React from "react";
+import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 
 const PopularClassesCard = ({ singleClass }) => {
   const { _id, image, language_name, instructor, total_seat, enrolled, price } =
     singleClass;
   return (
-    <div>
+    <Fade cascade>
       <div className="card w-96 mx-auto glass">
         <figure>
           <img className=" w-80 h-48" src={image} alt="car!" />
@@ -23,7 +24,7 @@ const PopularClassesCard = ({ singleClass }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Fade>
   );
 };
 
