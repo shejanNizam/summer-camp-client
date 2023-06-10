@@ -81,7 +81,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink to="/dashboard/manageClasses">
-                  <FaWallet></FaWallet> Manage Classes
+                  <FaWallet></FaWallet> Manage Classes (My Classes)
                 </NavLink>
               </li>
               <li>
@@ -104,7 +104,8 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink to="/dashboard/reservations">
-                  <FaCalendarAlt></FaCalendarAlt> Reservations
+                  <FaCalendarAlt></FaCalendarAlt> Reservations (My Enrolled
+                  Classes)
                 </NavLink>
               </li>
               <li>
@@ -114,7 +115,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink to="/dashboard/mycart">
-                  <FaShoppingCart></FaShoppingCart> My Cart
+                  <FaShoppingCart></FaShoppingCart> My Carts (Selected Classes)
                   <span className="badge inl badge-secondary">
                     +{cartClass?.length || 0}
                   </span>

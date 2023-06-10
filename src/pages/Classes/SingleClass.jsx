@@ -12,6 +12,8 @@ const SingleClass = ({ singleClass }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const available = total_seat - enrolled;
+
   const handleSelect = (singleClass) => {
     console.log(singleClass);
     if (user && user?.email) {
@@ -73,6 +75,7 @@ const SingleClass = ({ singleClass }) => {
           <p> Instructor: {instructor} </p>
           <p> Total Seat: {total_seat} </p>
           <p> Enrolled: {enrolled} </p>
+          <p> Available Seat: {available} </p>
           <p> Price: ${price} </p>
           <div className="card-actions justify-end">
             <button
