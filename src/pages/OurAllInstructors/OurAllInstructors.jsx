@@ -1,9 +1,9 @@
 import React from "react";
-import useInstructor from "../../hooks/useInstructor";
+import useAllInstructor from "../../hooks/useAllInstructor";
 import AllInstructorCard from "./AllInstructorCard";
 
 const OurAllInstructors = () => {
-  const [allInstructors] = useInstructor();
+  const [allInstructors] = useAllInstructor();
 
   return (
     <div className="py-20">

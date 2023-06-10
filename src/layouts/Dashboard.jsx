@@ -13,14 +13,14 @@ import {
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useCart from "../hooks/useCart";
-import usePopularInstructor from "../hooks/usePopularInstructor";
+import useVarifyInstructor from "../hooks/useVarifyInstructor";
 
 const Dashboard = () => {
   const [cartClass] = useCart();
 
   // const isAdmin = true;
   const [isAdmin] = useAdmin();
-  const [isInstructor] = usePopularInstructor();
+  const [isInstructor] = useVarifyInstructor();
   // const isInstructor = true;
 
   return (

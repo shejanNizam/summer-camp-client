@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const PopularInstructorsCard = ({ singleInstructor }) => {
   const {
@@ -26,7 +27,9 @@ const PopularInstructorsCard = ({ singleInstructor }) => {
           <p> Num of classes: {num_of_classes} </p>
           <p> Total Students: {num_of_students} </p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary btn-sm">Details</button>
+            <Link to="/ourAllInstructors">
+              <button className="btn btn-primary btn-sm">Details</button>
+            </Link>
           </div>
         </div>
       </div>

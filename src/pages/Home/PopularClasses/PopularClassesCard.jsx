@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const PopularClassesCard = ({ singleClass }) => {
   const { _id, image, language_name, instructor, total_seat, enrolled, price } =
@@ -16,12 +17,9 @@ const PopularClassesCard = ({ singleClass }) => {
           <p> Enrolled: {enrolled} </p>
           <p> Price: ${price} </p>
           <div className="card-actions justify-end">
-            <button
-              onClick={() => handleSelect(singleClass)}
-              className="btn btn-primary btn-sm"
-            >
-              Select
-            </button>
+            <Link to="/classes">
+              <button className="btn btn-primary btn-sm">Select</button>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,22 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure";
 
-const useInstructor = () => {
+const useInstructors = () => {
   const [axiosSecure] = useAxiosSecure();
 
   const {
-    data: allInstructors = [],
+    data: instructors = [],
     isLoading: loading,
     refetch,
   } = useQuery({
-    queryKey: ["allInstructors"],
+    queryKey: ["instructors"],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/allInstructors`);
+      const res = await axiosSecure.get(`/instructors`);
       return res.data;
     },
   });
-
-  return [allInstructors, loading, refetch];
+  return [instructors, loading, refetch];
 };
 
-export default useInstructor;
+export default useInstructors;

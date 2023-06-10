@@ -25,9 +25,9 @@ const AllInstructorCard = ({ singleInstructor }) => {
           <p> Language: {taken_class} </p>
           <p> Num of classes: {num_of_classes} </p>
           <p> Total Students: {num_of_students} </p>
-          <div className="card-actions justify-end">
+          {/* <div className="card-actions justify-end">
             <button className="btn btn-primary btn-sm">Details</button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

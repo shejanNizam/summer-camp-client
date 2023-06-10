@@ -20,7 +20,8 @@ const SingleClass = ({ singleClass }) => {
         image,
         language_name,
         instructor,
-        available_seat,
+        total_seat,
+        enrolled,
         price,
         email: user?.email,
       };
