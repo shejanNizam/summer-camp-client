@@ -6,7 +6,7 @@ const PopularClassesCard = ({ singleClass }) => {
     singleClass;
   return (
     <div>
-      <div className="card w-96 glass">
+      <div className="card w-96 mx-auto glass">
         <figure>
           <img className=" w-80 h-48" src={image} alt="car!" />
         </figure>

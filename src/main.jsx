@@ -1,8 +1,10 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import "daisyui/dist/full.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 import { RouterProvider } from "react-router-dom";
+import "tailwindcss/tailwind.css";
 import "./index.css";
 import AuthProvider from "./providers/AuthProvider";
 import router from "./router/Routes/Routes";

@@ -1,10 +1,34 @@
 import React from "react";
+import { Helmet } from "react-helmet";
+import { FaAngleLeft } from "react-icons/fa";
+import { Link, useRouteError } from "react-router-dom";
+import image from "../../assets/Error/404.gif";
 
 const Error = () => {
+  const { error } = useRouteError();
   return (
-    <div>
-      <h3>Error Page 404 . Not Found</h3>
-    </div>
+    <>
+      <Helmet>
+        <title>Error Page | LanguageGuide</title>
+      </Helmet>
+      <section className="flex items-center h-screen p-16 bg-gray-100 text-gray-900">
+        <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
+          <div>
+            <img src={image} alt="404" />
+            <Link to="/">
+              <div className="text-end -mt-24 me-4">
+                <p className="text-xl font-semibold md:text-2xl mb-4">
+                  {error?.message}
+                </p>
+                <button className="btn btn-outline btn-sm font-bold">
+                  <FaAngleLeft /> Back to Homepage
+                </button>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 

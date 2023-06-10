@@ -5,8 +5,11 @@ import useAdmin from "../../../hooks/useAdmin";
 import useAuth from "../../../hooks/useAuth";
 import useCart from "../../../hooks/useCart";
 import useVarifyInstructor from "../../../hooks/useVarifyInstructor";
+import useDarkLight from "../../../hooks/useDarkLight";
 
 const NavBar = () => {
+  const [isDarkMode, toggleTheme] = useDarkLight();
+
   const { user, logOut } = useAuth();
   const [cartClass] = useCart();
   const [isAdmin] = useAdmin();
@@ -100,6 +103,11 @@ const NavBar = () => {
           <Link to="/" className="btn btn-ghost normal-case text-3xl">
             LanguageGuide
           </Link>
+          <div className="flex justify-end m-4">
+            <button onClick={toggleTheme} className="btn btn-outline btn-sm ">
+              {isDarkMode ? "Light " : "Dark "}
+            </button>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navItems}</ul>

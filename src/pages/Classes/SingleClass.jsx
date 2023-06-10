@@ -3,16 +3,24 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import useCart from "../../hooks/useCart";
+import useAdmin from "../../hooks/useAdmin";
+import useVarifyInstructor from "../../hooks/useVarifyInstructor";
 
 const SingleClass = ({ singleClass }) => {
   const { _id, image, language_name, instructor, total_seat, enrolled, price } =
     singleClass;
+
   const { user } = useAuth();
   const [, refetch] = useCart();
   const navigate = useNavigate();
   const location = useLocation();
 
   const available = total_seat - enrolled;
+
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useVarifyInstructor();
+  // const isAdmin = true;
+  // const isInstructor = true;
 
   const handleSelect = (singleClass) => {
     console.log(singleClass);
@@ -80,7 +88,10 @@ const SingleClass = ({ singleClass }) => {
           <div className="card-actions justify-end">
             <button
               onClick={() => handleSelect(singleClass)}
-              className="btn btn-primary btn-sm"
+              className={`btn btn-outline btn-sm ${
+                isAdmin && isInstructor ? "disabled" : ""
+              }`}
+              disabled={isAdmin && isInstructor}
             >
               Select
             </button>
