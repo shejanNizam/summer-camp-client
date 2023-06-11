@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import useAdmin from "../../../hooks/useAdmin";
 import useAuth from "../../../hooks/useAuth";
 import useCart from "../../../hooks/useCart";
-import useVarifyInstructor from "../../../hooks/useVarifyInstructor";
 import useDarkLight from "../../../hooks/useDarkLight";
+import useVarifyInstructor from "../../../hooks/useVarifyInstructor";
 
 const NavBar = () => {
   const [isDarkMode, toggleTheme] = useDarkLight();
@@ -48,12 +48,10 @@ const NavBar = () => {
             ) : (
               <>
                 <Link to="/dashboard/mycart ">
-                  <button className="btn">
-                    Dashboard
-                    <div className="badge badge-secondary">
-                      +{cartClass.length || 0}
-                    </div>
-                  </button>
+                  Dashboard
+                  <div className="badge badge-ghost">
+                    +{cartClass.length || 0}
+                  </div>
                 </Link>
               </>
             )}
@@ -95,7 +93,7 @@ const NavBar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black font-semibold "
             >
               {navItems}
             </ul>
@@ -110,7 +108,9 @@ const NavBar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navItems}</ul>
+          <ul className="menu menu-horizontal px-1 font-semibold">
+            {navItems}
+          </ul>
         </div>
         <div className="navbar-end">
           {user?.photoURL ? (

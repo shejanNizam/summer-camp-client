@@ -12,6 +12,7 @@ import BookingClasses from "../../pages/Dashboard/InstructorsPages/BookingClasse
 import InstructorHome from "../../pages/Dashboard/InstructorsPages/InstructorHome/InstructorHome";
 import ManageClasses from "../../pages/Dashboard/InstructorsPages/ManageClasses/ManageClasses";
 import MyCart from "../../pages/Dashboard/UsersPages/MyCart/MyCart";
+import Payment from "../../pages/Dashboard/UsersPages/Payment/Payment";
 import PaymentHistory from "../../pages/Dashboard/UsersPages/PaymentHistory/PaymentHistory";
 import Reservations from "../../pages/Dashboard/UsersPages/Reservations/Reservations";
 import UserHome from "../../pages/Dashboard/UsersPages/UserHome/UserHome";
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "reservations",
         element: <Reservations />,
+      },
+      {
+        path: "payment",
+        element: <Payment />,
       },
       {
         path: "paymentHistory",
