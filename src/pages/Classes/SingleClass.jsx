@@ -1,15 +1,17 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import useAuth from "../../hooks/useAuth";
-import useCart from "../../hooks/useCart";
 import useAdmin from "../../hooks/useAdmin";
+import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useCart from "../../hooks/useCart";
 import useVarifyInstructor from "../../hooks/useVarifyInstructor";
 
 const SingleClass = ({ singleClass }) => {
   const { _id, image, language_name, instructor, total_seat, enrolled, price } =
     singleClass;
 
+  const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
   const [, refetch] = useCart();
   const navigate = useNavigate();
@@ -35,27 +37,19 @@ const SingleClass = ({ singleClass }) => {
         price,
         email: user?.email,
       };
-      fetch(`http://localhost:7000/carts`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(cartClass),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data?.insertedId) {
-            refetch();
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: `${singleClass?.language_name} class has been selected`,
-              showConfirmButton: false,
-              timer: 1500,
-            });
-            navigate("/dashboard/mycart");
-          }
-        });
+      axiosSecure.post(`/carts`, cartClass).then((data) => {
+        if (data?.data?.insertedId) {
+          refetch();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `${singleClass?.language_name} class has been selected`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/dashboard/mycart");
+        }
+      });
     } else {
       Swal.fire({
         title: "Please Login to selected!!",

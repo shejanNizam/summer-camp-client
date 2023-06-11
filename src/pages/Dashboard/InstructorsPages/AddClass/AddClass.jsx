@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
@@ -10,6 +11,7 @@ const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
 const AddClass = () => {
   const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -61,6 +63,7 @@ const AddClass = () => {
                 showConfirmButton: false,
                 timer: 1500,
               });
+              navigate("/dashboard/manageClasses");
             }
           });
         }
