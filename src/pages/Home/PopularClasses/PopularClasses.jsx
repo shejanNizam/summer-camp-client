@@ -1,13 +1,7 @@
 import React from "react";
-import {
-  Bounce,
-  Hinge,
-  JackInTheBox,
-  Roll,
-  Rotate,
-  Slide,
-  Zoom,
-} from "react-awesome-reveal";
+import { Zoom } from "react-awesome-reveal";
+import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import usePopularClasses from "../../../hooks/usePopularClasses";
 import PopularClassesCard from "./PopularClassesCard";
 
@@ -17,7 +11,7 @@ const PopularClasses = () => {
   return (
     <div>
       <Zoom>
-        <h3 className="text-3xl text-center font-bold my-20">
+        <h3 className="text-3xl text-center text-orange-400 font-bold my-20">
           Here's Our Top {classes?.length} Popular Classes
         </h3>
       </Zoom>
@@ -29,6 +23,13 @@ const PopularClasses = () => {
             singleClass={singleClass}
           ></PopularClassesCard>
         ))}
+      </div>
+      <div className=" text-end my-8">
+        <Link to="/classes">
+          <button className="btn btn-outline btn-sm">
+            See All <FaArrowRight />
+          </button>
+        </Link>
       </div>
     </div>
   );

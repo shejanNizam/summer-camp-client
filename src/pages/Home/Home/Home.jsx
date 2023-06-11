@@ -15,7 +15,6 @@ const Home = () => {
         <body className={isDarkMode ? "dark" : ""} />
       </Helmet>
       <Banner />
-
       <PopularClasses />
       <PopularInstructors />
       <Contact />

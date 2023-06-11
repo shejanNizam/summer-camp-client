@@ -1,13 +1,17 @@
 import React from "react";
 import useAuth from "../../../../hooks/useAuth";
 import useInstructors from "../../../../hooks/useInstructors";
+import { Helmet } from "react-helmet";
 
 const AllInstructors = () => {
   const [instructors] = useInstructors();
   const { user } = useAuth();
-  // const {_id, name, email, role } = instructors;
+
   return (
     <div>
+      <Helmet>
+        <title>All Instructors | LanguageGuide</title>
+      </Helmet>
       <h3 className="text-3xl text-center font-bold my-4">
         Our Available {instructors?.length} Instructors are Here
       </h3>

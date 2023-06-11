@@ -1,4 +1,5 @@
 import React from "react";
+import { Zoom } from "react-awesome-reveal";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAdmin from "../../hooks/useAdmin";
@@ -70,7 +71,9 @@ const SingleClass = ({ singleClass }) => {
     <>
       <div className="card w-96 glass">
         <figure>
-          <img className=" w-80 h-48" src={image} alt="car!" />
+          <Zoom>
+            <img className=" w-80 h-48" src={image} alt="#" />
+          </Zoom>
         </figure>
         <div className="card-body">
           <h2 className="card-title"> {language_name} </h2>
@@ -80,15 +83,17 @@ const SingleClass = ({ singleClass }) => {
           <p> Available Seat: {available} </p>
           <p> Price: ${price} </p>
           <div className="card-actions justify-end">
-            <button
-              onClick={() => handleSelect(singleClass)}
-              className={`btn btn-outline btn-sm ${
-                isAdmin && isInstructor ? "disabled" : ""
-              }`}
-              disabled={isAdmin && isInstructor}
-            >
-              Select
-            </button>
+            <Zoom>
+              <button
+                onClick={() => handleSelect(singleClass)}
+                className={`btn btn-outline btn-sm ${
+                  isAdmin && isInstructor ? "disabled" : ""
+                }`}
+                disabled={isAdmin && isInstructor}
+              >
+                Select
+              </button>
+            </Zoom>
           </div>
         </div>
       </div>

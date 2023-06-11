@@ -1,15 +1,16 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
-// import "./CheckoutForm.css";
-import Swal from "sweetalert2";
 
 const CheckoutForm = ({ cartClass, price }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
+  const navigate = useNavigate();
 
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
@@ -46,7 +47,6 @@ const CheckoutForm = ({ cartClass, price }) => {
       setCardError(error.message);
     } else {
       setCardError("");
-      // console.log('payment method', paymentMethod)
     }
 
     setProcessing(true);
@@ -70,7 +70,7 @@ const CheckoutForm = ({ cartClass, price }) => {
     setProcessing(false);
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent.id);
-      // save payment information to the server
+
       const payment = {
         email: user?.email,
         transactionId: paymentIntent.id,
@@ -92,6 +92,7 @@ const CheckoutForm = ({ cartClass, price }) => {
             showConfirmButton: false,
             timer: 1500,
           });
+          navigate("/");
         }
       });
     }

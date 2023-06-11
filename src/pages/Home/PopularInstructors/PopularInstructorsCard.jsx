@@ -29,11 +29,6 @@ const PopularInstructorsCard = ({ singleInstructor }) => {
           <p> Language: {taken_class} </p>
           <p> Num of classes: {num_of_classes} </p>
           <p> Total Students: {num_of_students} </p>
-          <div className="card-actions justify-end">
-            <Link to="/ourAllInstructors">
-              <button className="btn btn-primary btn-sm">Details</button>
-            </Link>
-          </div>
         </div>
       </div>
     </Fade>

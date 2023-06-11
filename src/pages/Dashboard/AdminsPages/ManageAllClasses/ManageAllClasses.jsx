@@ -3,6 +3,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import UseClasses from "../../../../hooks/UseClasses";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 const ManageAllClasses = () => {
   const [classes, , refetch] = UseClasses();
@@ -32,6 +33,9 @@ const ManageAllClasses = () => {
   };
   return (
     <div className="w-full">
+      <Helmet>
+        <title>Manage All Classes | LanguageGuide</title>
+      </Helmet>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           {/* head */}

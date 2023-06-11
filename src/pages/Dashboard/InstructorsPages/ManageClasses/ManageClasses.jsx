@@ -1,33 +1,15 @@
 import React from "react";
 import UseClasses from "../../../../hooks/UseClasses";
-import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 const ManageClasses = () => {
-  const [classes, , refetch] = UseClasses();
-  const [axiosSecure] = useAxiosSecure();
+  const [classes, ,] = UseClasses();
 
-  // const handleDelete = (item) => {
-  //   Swal.fire({
-  //     title: "Are you sure?",
-  //     text: "You won't be able to revert this!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Yes, delete it!",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       axiosSecure.delete(`/classes/${item._id}`).then((res) => {
-  //         if (res.data.deletedCount > 0) {
-  //           refetch();
-  //           Swal.fire("Deleted!", "Your file has been deleted.", "success");
-  //         }
-  //       });
-  //     }
-  //   });
-  // };
   return (
     <div className="w-full">
+      <Helmet>
+        <title>Manage Classes | LanguageGuide</title>
+      </Helmet>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           {/* head */}
@@ -41,7 +23,6 @@ const ManageClasses = () => {
               <th>Total</th>
               <th>Enrolled</th>
               <th>Update</th>
-              {/* <th>Delete</th> */}
             </tr>
           </thead>
           <tbody>
@@ -69,16 +50,8 @@ const ManageClasses = () => {
                 <td>{item.total_seat}</td>
                 <td>{item.enrolled}</td>
                 <td>
-                  <button className="btn btn-ghost btn-xs">details</button>
+                  <button className="btn btn-outline btn-xs">Update</button>
                 </td>
-                {/* <td>
-                  <button
-                    onClick={() => handleDelete(item)}
-                    className="btn btn-ghost bg-red-600  text-white"
-                  >
-                    <FaTrashAlt></FaTrashAlt>
-                  </button>
-                </td> */}
               </tr>
             ))}
           </tbody>

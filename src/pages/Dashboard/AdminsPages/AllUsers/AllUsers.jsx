@@ -58,7 +58,7 @@ const AllUsers = () => {
   return (
     <div className="w-full">
       <Helmet>
-        <title> All users | LanguageGuide </title>
+        <title> All Users | LanguageGuide </title>
       </Helmet>
       <h3 className="text-3xl font-semibold my-4">
         Total Users: {users.length}
