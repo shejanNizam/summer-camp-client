@@ -40,7 +40,6 @@ const MyCart = () => {
       <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center">
         <h3 className="text-3xl">Total Items: {cartClass.length}</h3>
         <h3 className="text-3xl">Total Price: ${total}</h3>
-        <button className="btn btn-warning btn-sm">PAY</button>
       </div>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
@@ -52,6 +51,7 @@ const MyCart = () => {
               <th> Language </th>
               <th> Instructor </th>
               <th> Price </th>
+              <th> Payment </th>
               <th> Remove </th>
             </tr>
           </thead>
@@ -72,6 +72,9 @@ const MyCart = () => {
                 <td>{item.language_name}</td>
                 <td>{item.instructor}</td>
                 <td>${item.price}</td>
+                <td>
+                  <button className="btn btn-warning btn-sm">PAY</button>
+                </td>
                 <td>
                   <button
                     onClick={() => handleDelete(item)}

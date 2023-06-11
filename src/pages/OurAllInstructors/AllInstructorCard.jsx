@@ -1,4 +1,5 @@
 import React from "react";
+import { Zoom } from "react-awesome-reveal";
 
 const AllInstructorCard = ({ singleInstructor }) => {
   const {
@@ -10,14 +11,16 @@ const AllInstructorCard = ({ singleInstructor }) => {
     num_of_students,
   } = singleInstructor;
   return (
-    <div>
+    <>
       <div className="card w-72 mx-auto glass">
         <figure>
-          <div className="avatar mt-4">
-            <div className="w-40 rounded-full ring ring-ghost ring-offset-base-100 ring-offset-2">
-              <img src={image} />
+          <Zoom>
+            <div className="avatar mt-4">
+              <div className="w-40 rounded-full ring ring-ghost ring-offset-base-100 ring-offset-2">
+                <img src={image} />
+              </div>
             </div>
-          </div>
+          </Zoom>
         </figure>
         <div className="card-body">
           <h2 className="card-title"> {instructor_name} </h2>
@@ -30,7 +33,7 @@ const AllInstructorCard = ({ singleInstructor }) => {
           </div> */}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
