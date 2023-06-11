@@ -1,41 +1,68 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
-import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useAuth from "../../../../hooks/useAuth";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+
+const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
 
 const AddClass = () => {
+  const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
 
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
   } = useForm();
+
+  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
+
   const onSubmit = (data) => {
-    const newClass = {
-      language_name: data.language_name,
-      image: data.image,
-      instructor: data.instructor,
-      email: data.email,
-      total_seat: parseInt(data.total_seat),
-      enrolled: parseInt(data.enrolled),
-      price: parseInt(data.price),
-    };
-    console.log("clicked", data, newClass);
-    fetch(`http://localhost:7000/addClass`, {
+    const formData = new FormData();
+    formData.append("image", data.image[0]);
+
+    fetch(img_hosting_url, {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newClass),
+      body: formData,
     })
       .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-        if (result.acknowledged) {
-          Swal.fire("Added!", "Your class has been added.", "success");
+      .then((imgResponse) => {
+        console.log(imgResponse);
+        if (imgResponse.success) {
+          const imgURL = imgResponse.data.display_url;
+          const {
+            language_name,
+            instructor,
+            email,
+            total_seat,
+            enrolled,
+            price,
+          } = data;
+          const newItem = {
+            language_name,
+            image: imgURL,
+            instructor,
+            email,
+            total_seat: parseFloat(total_seat),
+            enrolled: parseFloat(enrolled),
+            price: parseFloat(price),
+          };
+          console.log(newItem);
+          axiosSecure.post("/addClass", newItem).then((data) => {
+            if (data.data.insertedId) {
+              reset();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Your Class added successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          });
         }
       });
   };
@@ -65,8 +92,14 @@ const AddClass = () => {
             placeholder="Language Name"
             {...register("language_name", { required: true })}
           />
-          <input
+          {/* <input
             className="m-2 p-2 h-10 w-60 rounded"
+            placeholder="Language Image"
+            {...register("image", { required: true })}
+          /> */}
+          <input
+            type="file"
+            className="file-input file-input-bordered file-input-xs max-w-xs m-2 p-2 h-10 w-60 rounded"
             placeholder="Language Image"
             {...register("image", { required: true })}
           />
@@ -74,11 +107,13 @@ const AddClass = () => {
           <br />
           <input
             className="m-2 p-2 h-10 w-60 rounded"
+            type="number"
             defaultValue={25}
             {...register("total_seat", { required: true })}
           />
           <input
             className="m-2 p-2 h-10 w-60 rounded"
+            type="number"
             placeholder="enrolled"
             {...register("enrolled", { required: true })}
           />
@@ -86,6 +121,7 @@ const AddClass = () => {
 
           <input
             className="m-2 p-2 h-10 w-60 rounded"
+            type="number"
             placeholder="Price"
             {...register("price", { required: true })}
           />
