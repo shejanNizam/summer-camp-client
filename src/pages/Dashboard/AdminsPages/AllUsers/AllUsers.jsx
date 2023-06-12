@@ -13,9 +13,12 @@ const AllUsers = () => {
   });
 
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:7000/users/admin/${user._id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://summer-camp-server-sigma-blush.vercel.app/users/admin/${user._id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -33,9 +36,12 @@ const AllUsers = () => {
   };
 
   const handleMakeInstructor = (user) => {
-    fetch(`http://localhost:7000/users/instructor/${user._id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://summer-camp-server-sigma-blush.vercel.app/users/instructor/${user._id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
