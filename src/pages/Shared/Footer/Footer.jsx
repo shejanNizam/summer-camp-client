@@ -12,7 +12,7 @@ const Footer = () => {
           <p>
             LanguageGuide Summer Camp School
             <br />
-            Programming Hero Assignment 12
+            Copyright © All rights reserved.
           </p>
         </div>
         <div>
